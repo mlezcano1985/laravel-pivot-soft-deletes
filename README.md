@@ -98,7 +98,7 @@ If we want to define a [Custom Intermediate Table Model](https://laravel.com/doc
         return $this->belongsToMany(Role::class)->using(AccountRole::class);
     }
 ```
-but is hight reccommended to include SoftDeletes trait on custom pivot model
+but is hight reccommended to include **SoftDeletes** trait on custom pivot model
 ```php
 <?php
 namespace App;
