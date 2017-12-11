@@ -1,4 +1,4 @@
-# laravel-pivot-soft-deletes
+# Pivot soft deletes for the Laravel PHP Framework
 Soft delete Eloquent pivot models  using Laravel SoftDeletes trait.
 
 # Installation
