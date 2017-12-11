@@ -1,15 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: itopia
- * Date: 12/8/2017
- * Time: 1:46 PM
- */
 
-namespace App\Lib;
+namespace Mlezcano1985\Database\Support;
 
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Facades\DB;
 
 trait PivotSoftDeletes
@@ -17,7 +10,7 @@ trait PivotSoftDeletes
     /**
      * SoftDelete for Pivot table.
      *
-     * @param  $related BelongsToMany
+     * @param  $related \Illuminate\Database\Eloquent\Relations\BelongsToMany
      * @param $id int
      * @return int
      */
