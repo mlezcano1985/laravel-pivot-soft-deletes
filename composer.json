@@ -1,14 +1,15 @@
 {
     "name": "mlezcano1985/laravel-pivot-soft-deletes",
     "description": "Soft delete Eloquent pivot models using Laravel SoftDeletes trait.",
-    "type": "library",
+    "type": "utility",
     "license": "MIT",
+	"keywords": ["log", "log-reader", "log-viewer", "logging", "laravel", "lumen"],
     "authors": [
         {
             "name": "mlezcano1985",
             "email": "mlezcano1985@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "require": {}
 }
