@@ -11,7 +11,7 @@ $ composer require mlezcano1985/laravel-pivot-soft-deletes
 <?php
 namespace App;
 
-use App\Lib\PivotSoftDeletes;
+use Mlezcano1985\Database\Support\PivotSoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
