@@ -1,5 +1,5 @@
 # Pivot soft deletes for the Laravel PHP Framework
-Soft delete Eloquent pivot models  using Laravel SoftDeletes trait.
+Easy and fast way to soft deletes Eloquent pivot models using Laravel [SoftDeletes](https://laravel.com/docs/eloquent#soft-deleting) trait.
 
 # Installation
 This trait is installed via [Composer](http://getcomposer.org/). To install, simply add to your `composer.json` file:
@@ -7,6 +7,7 @@ This trait is installed via [Composer](http://getcomposer.org/). To install, sim
 $ composer require mlezcano1985/laravel-pivot-soft-deletes
 ```
 # Example
+Include SoftDeletes and PivotSoftDeletes in Many to Many models.
 ```php
 <?php
 namespace App;
@@ -50,6 +51,37 @@ class Account extends Authenticatable
     }
 }
 ```
+and
+```php
+<?php
+namespace App;
+
+use Mlezcano1985\Database\Support\PivotSoftDeletes;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Model;
+
+class Role extends Model
+{
+    use SoftDeletes, PivotSoftDeletes;
+
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = ['deleted_at'];
+    }
+
+    /**
+     * @return BelongsToMany
+     */
+    public function accounts()
+    {
+        return $this->belongsToMany(Account::class);
+    }
+}
+```
 Now we can use `detach()` method on Account model to softdelete the pivot table
 ```php
 $account = App\Role::find($role_id)->accounts()->findOrFail($account_id)
@@ -65,6 +97,27 @@ If we want to define a [Custom Intermediate Table Model](https://laravel.com/doc
     {
         return $this->belongsToMany(Role::class)->using(AccountRole::class);
     }
+```
+but is hight reccommended to include SoftDeletes trait on custom pivot model
+```php
+<?php
+namespace App;
+
+use Illuminate\Database\Eloquent\Relations\Pivot;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+class AccountRole extends Pivot
+{
+    use SoftDeletes;
+
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = ['deleted_at'];
+    }
+}
 ```
 and now
 ```php
