@@ -91,12 +91,12 @@ $account->detach(); // Soft delete the Intermediate Table
 If we want to define a [Custom Intermediate Table Model](https://laravel.com/docs/eloquent-relationships#many-to-many), the process works in the same way. For example:
 ```php
 /**
-     * @return BelongsToMany
-     */
-    public function roles()
-    {
-        return $this->belongsToMany(Role::class)->using(AccountRole::class);
-    }
+ * @return BelongsToMany
+ */
+public function roles()
+{
+    return $this->belongsToMany(Role::class)->using(AccountRole::class);
+}
 ```
 but is hight reccommended to include **SoftDeletes** trait on custom pivot model
 ```php
