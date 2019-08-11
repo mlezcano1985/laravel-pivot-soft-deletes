@@ -21,13 +21,13 @@ trait PivotSoftDeletes
         $relateKey =  $related->getQualifiedRelatedKeyName();
         $foreignKey =  $related->getQualifiedForeignKeyName();
         $tableName = $related->getTable();
-        $deteteAt = $related->getTable().'.deleted_at';
+        $deleteAt = $related->getTable().'.deleted_at';
 
         return DB::table($tableName)
             ->where($relateKey, $id)
             ->where($foreignKey, $this->id)
             ->update([
-                $deteteAt => Carbon::now()
+                $deleteAt => Carbon::now()
             ]);
     }
 
@@ -41,7 +41,7 @@ trait PivotSoftDeletes
         $relateKey =  $related->getRelatedKey();
         $foreignKey =  $related->getForeignKey();
         $tableName = $related->getTable();
-        $deteteAt = $related->getTable().'.deleted_at';
+        $deleteAt = $related->getTable().'.deleted_at';
         $relatedId = $related->attributes[$relateKey];
         $foreignId = $related->attributes[$foreignKey];
 
@@ -49,7 +49,7 @@ trait PivotSoftDeletes
             ->where($relateKey, $relatedId)
             ->where($foreignKey, $foreignId)
             ->update([
-                $deteteAt => Carbon::now()
+                $deleteAt => Carbon::now()
             ]);
     }
 
