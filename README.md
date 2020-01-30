@@ -1,3 +1,6 @@
+# DEPRECATED
+This is no longer supported, please consider using another package instead.
+
 # Pivot soft deletes for the Laravel PHP Framework
 Easy and fast way to soft deletes Eloquent pivot models using Laravel [SoftDeletes](https://laravel.com/docs/eloquent#soft-deleting) trait.
 
